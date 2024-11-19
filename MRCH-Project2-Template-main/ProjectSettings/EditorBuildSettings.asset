@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Content/RAS_WJY/Scenes/RAS BUILDING 1.unity
     guid: 6de9f429129bc4e0aa6442073cf82461
-  - enabled: 1
+  - enabled: 0
     path: Assets/Content/RAS_WJY/Scenes/Main Menu.unity
     guid: e8c2cf82ef3d04c5cadd3280eb044ece
   m_configObjects:
