@@ -72,7 +72,7 @@ public class RingTrigger : MonoBehaviour
             }
 
             // Optionally, deactivate this trigger box to prevent repeated triggering
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
         }
     }
 }
