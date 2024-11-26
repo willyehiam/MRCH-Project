@@ -4,34 +4,57 @@ using UnityEngine;
 
 public class BalconyTrigger : MonoBehaviour
 {
-    // Assign the sprite GameObject in the Inspector
-    [SerializeField] private GameObject spriteToDisplay;
+    // Assign the GameObjects in the Inspector
+    [SerializeField] private List<GameObject> assetsToDisplay;
 
     void Awake()
     {
-        if (spriteToDisplay != null)
+        if (assetsToDisplay != null && assetsToDisplay.Count > 0)
         {
-            spriteToDisplay.SetActive(false);  // Ensure the sprite is initially hidden
+            // Ensure all assets are initially hidden
+            foreach (var asset in assetsToDisplay)
+            {
+                if (asset != null)
+                {
+                    asset.SetActive(false);
+                }
+                else
+                {
+                    Debug.LogWarning("One or more GameObjects in the list are not assigned.");
+                }
+            }
         }
         else
         {
-            Debug.LogWarning("Sprite GameObject not assigned in the Inspector.");
+            Debug.LogWarning("Assets list is empty or not assigned in the Inspector.");
         }
     }
 
     void OnTriggerEnter(Collider collider)
     {
-        if (spriteToDisplay != null && collider.CompareTag("Player"))
+        if (assetsToDisplay != null && assetsToDisplay.Count > 0 && collider.CompareTag("Player"))
         {
-            spriteToDisplay.SetActive(true);  // Show the sprite
+            foreach (var asset in assetsToDisplay)
+            {
+                if (asset != null)
+                {
+                    asset.SetActive(true); // Show each asset
+                }
+            }
         }
     }
 
     void OnTriggerExit(Collider collider)
     {
-        if (spriteToDisplay != null && collider.CompareTag("Player"))
+        if (assetsToDisplay != null && assetsToDisplay.Count > 0 && collider.CompareTag("Player"))
         {
-            spriteToDisplay.SetActive(false);  // Hide the sprite
+            foreach (var asset in assetsToDisplay)
+            {
+                if (asset != null)
+                {
+                    asset.SetActive(false); // Hide each asset
+                }
+            }
         }
     }
 }
